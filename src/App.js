@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.scss';
+// eslint-disable-next-line
+import M from 'materialize-css';
+import Nav from './components/Nav';
+import India from './components/India';
+import Autocomplete from './components/Autocomplete';
+import Global from './components/Global';
+import Footer from './components/Footer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [country, setCountry] = useState('');
+
+	const updateSearched = (country) => {
+		if (country !== 'india') {
+			setCountry(country);
+		}
+	};
+
+	return (
+		<div className='App'>
+			<Nav title='Covid-19 Stats' />
+			<Autocomplete updateSearched={updateSearched} />
+			<div className='container'>
+				{country === 'India' || country === '' ? <India /> : <Global country={country} />}
+			</div>
+			<Footer />
+		</div>
+	);
 }
 
 export default App;

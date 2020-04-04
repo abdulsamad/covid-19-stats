@@ -1,0 +1,81 @@
+/* Autocomplete */
+.autocomplete {
+	&::-webkit-input-placeholder {
+		padding-left: 10px;
+		text-transform: capitalize;
+	}
+	&::-moz-placeholder {
+		padding-left: 10px;
+		text-transform: capitalize;
+	}
+	&:-ms-input-placeholder {
+		padding-left: 10px;
+		text-transform: capitalize;
+	}
+	&::-ms-input-placeholder {
+		padding-left: 10px;
+		text-transform: capitalize;
+	}
+	&::placeholder {
+		padding-left: 10px;
+		text-transform: capitalize;
+	}
+}
+
+.autocomplete-content li img {
+	display: none;
+}
+
+.collapsible {
+	border-right: none;
+	border-left: none;
+	box-shadow: var(--card-shadow);
+	margin: 0;
+
+	li.active {
+		.collapsible-header {
+			.state-icon {
+				-webkit-transition: transfrom 0.5s ease;
+				transition: transfrom 0.5s ease;
+				-webkit-transform: rotateZ(-180deg);
+				transform: rotateZ(-180deg);
+			}
+		}
+	}
+}
+
+/* State-District */
+.state-district {
+	.collapsible-header {
+		position: relative;
+
+		.state-icon {
+			position: absolute;
+			right: 0;
+			margin: 0 1rem;
+		}
+	}
+
+	.collapsible-body {
+		padding: 1rem;
+	}
+}
+
+/* Misc */
+
+.total-cases {
+	color: color('red', 'accent-2');
+	font-weight: 700;
+}
+
+.total-active {
+	color: color('red', 'base');
+}
+
+.total-recovered {
+	color: color('green', 'base');
+}
+
+.total-deaths {
+	color: color('red', 'accent-4');
+}
