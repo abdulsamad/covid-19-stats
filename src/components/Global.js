@@ -11,14 +11,14 @@ function Global({ country }) {
 	const [lastUpdated, setLastUpdated] = useState('');
 
 	useEffect(() => {
-		if (country !== '') {
+		if (country !== null) {
 			fetch(`https://api.covid19api.com/summary`)
 				.then((res) => res.json())
 				.then((res) => {
 					const countries = res.Countries;
 					for (const key in countries) {
 						const current = countries[key];
-						if (current['Slug'] === country) {
+						if (current['Slug'] === country.slug) {
 							setTotalConfirmed(current.TotalConfirmed);
 							setTotalRecovered(current.TotalRecovered);
 							setTotalDeaths(current.TotalDeaths);
@@ -34,12 +34,16 @@ function Global({ country }) {
 	}, [country]);
 
 	const formatNumber = (num) => {
-		return new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 5 }).format(parseInt(num));
+		if (num <= 0) {
+			return '-';
+		} else {
+			return new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 5 }).format(parseInt(num));
+		}
 	};
 
 	return (
 		<div>
-			<h4 className='center-align'>{country.toUpperCase()}</h4>
+			<h4 className='center-align'>{country.name}</h4>
 			<br />
 			<h5 className='center-align'>Total</h5>
 			<section className='section'>
