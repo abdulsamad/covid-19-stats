@@ -22,7 +22,7 @@ function App() {
 			<Nav title='Covid-19 Stats' />
 			<Autocomplete updateSearched={updateSearched} />
 			<div className='container'>
-				{country === 'India' || country === '' ? <India /> : <Global country={country} />}
+				{country.name === 'India' || country === '' ? <India /> : <Global country={country} />}
 			</div>
 			<Footer />
 		</div>
