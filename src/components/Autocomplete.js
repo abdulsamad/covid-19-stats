@@ -3,6 +3,7 @@ import { Autocomplete as Auto } from 'react-materialize';
 
 function Autocomplete({ updateSearched }) {
 	const [countries, setCountries] = useState({});
+	const [slugs, setSlugs] = useState({});
 
 	useEffect(() => {
 		fetch('https://api.covid19api.com/countries')
@@ -11,19 +12,22 @@ function Autocomplete({ updateSearched }) {
 			})
 			.then((res) => {
 				const obj = {};
+				const slugs = {};
 
 				for (const key of res) {
-					if (key.Slug !== '') {
-						obj[key.Slug.trim()] = null;
+					if (key.Country !== '') {
+						obj[key.Country.trim()] = null;
+						slugs[key.Country.trim()] = key.Slug.trim();
 					}
 				}
 
+				setSlugs(slugs);
 				setCountries(obj);
 			});
 	}, []);
 
-	const onSubmit = (country) => {
-		updateSearched(country);
+	const onAutoComplete = (country) => {
+		updateSearched(slugs[country]);
 	};
 
 	return (
@@ -33,13 +37,10 @@ function Autocomplete({ updateSearched }) {
 				options={{
 					data: countries,
 					limit: 10,
-					onAutocomplete: onSubmit,
+					onAutocomplete: onAutoComplete,
 				}}
 				name='autocomplete'
 				placeholder='Enter a Country Name Here'
-				style={{
-					textTransform: 'lowercase',
-				}}
 			/>
 		</section>
 	);
