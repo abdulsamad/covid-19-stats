@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Row, Col } from 'react-materialize';
+import Slider from './Slider';
 
 function Global({ country }) {
 	const [totalConfirmed, setTotalConfirmed] = useState(0);
@@ -45,10 +46,12 @@ function Global({ country }) {
 		<div>
 			<h4 className='center-align'>{country.name}</h4>
 			<br />
+
+			{/* Total Cases */}
 			<h5 className='center-align'>Total</h5>
 			<section className='section'>
 				<Card>
-					<Row>
+					<Row className=''>
 						<Col s={6} className='total-cases'>
 							<h6 className='center-align'>Total Cases</h6>
 							<h5 className='center-align'>{formatNumber(totalConfirmed)}</h5>
@@ -71,6 +74,10 @@ function Global({ country }) {
 				</Card>
 			</section>
 
+			{/* Slider */}
+			<Slider />
+
+			{/* New Cases */}
 			<h5 className='center-align'>New Cases</h5>
 			<section className='section'>
 				<Card>

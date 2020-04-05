@@ -44,6 +44,15 @@
 	}
 }
 
+blockquote {
+	overflow: auto;
+}
+
+.slider .slides {
+	background-color: #eeeeda;
+	border-left: 5px solid $primary-color;
+}
+
 /* State-District */
 .state-district {
 	.collapsible-header {
@@ -78,4 +87,12 @@
 
 .total-deaths {
 	color: color('red', 'accent-4');
+}
+
+.justify-content-center {
+	justify-content: center;
+}
+
+.mtb-1 {
+	margin: 1rem auto;
 }

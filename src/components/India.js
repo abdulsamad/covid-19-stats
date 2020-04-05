@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import indiaFlag from '../assets/indiaFlag.png';
 import { Row, Col, Card, Icon, Collapsible, CollapsibleItem, Table } from 'react-materialize';
+import Slider from './Slider';
 
 function India() {
 	const [lastUpdateTime, setLastUpdateTime] = useState('');
@@ -60,7 +61,7 @@ function India() {
 			<section className='center-align'>
 				<h4>INDIA</h4>
 				<img src={indiaFlag} alt='Indian Flag' height='120px' width='200px' />
-				<blockquote>Last Updated On: {lastUpdateTime}</blockquote>
+				<div className='center-align mtb-1'>Last Updated On: {lastUpdateTime}</div>
 			</section>
 
 			{/* Count */}
@@ -100,6 +101,9 @@ function India() {
 					</div>
 				</Card>
 			</section>
+
+			{/* Slider */}
+			<Slider />
 
 			{/* Testing */}
 			<section className='section'>
