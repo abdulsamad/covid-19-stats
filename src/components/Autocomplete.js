@@ -27,7 +27,10 @@ function Autocomplete({ updateSearched }) {
 	}, []);
 
 	const onAutoComplete = (country) => {
-		updateSearched(slugs[country]);
+		updateSearched({
+			name: country,
+			slug: slugs[country],
+		});
 	};
 
 	return (
