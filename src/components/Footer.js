@@ -4,25 +4,28 @@ import { Footer as Foot } from 'react-materialize';
 function Footer() {
 	return (
 		<Foot className='footer' copyrights='Created By Abdul Samad'>
-			<h5 className='white-text'>Special Thanks to our Friends at -</h5>
+			<h6 className='white-text'>Special Thanks to</h6>
 			<ul>
 				<li>
 					<a
 						className='grey-text text-lighten-3'
-						href='http://indiacount.com/'
+						href='https://github.com/covid19india/'
+						target='_blank'
 						rel='noreferrer noopener'>
-						INDIA COVID-19 TRACKER
+						COVID-19INDIA
 					</a>
 				</li>
 				<li>
 					<a
 						className='grey-text text-lighten-3'
+						target='_blank'
 						href='https://covid19api.com/'
 						rel='noreferrer noopener'>
-						Covid19api
+						KYLE REDELINGHUYS
 					</a>
 				</li>
 			</ul>
+			<h6>for the API.</h6>
 		</Foot>
 	);
 }
