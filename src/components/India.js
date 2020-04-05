@@ -81,7 +81,7 @@ function India() {
 					<Row>
 						{totalCases && (
 							<Col s={6} className='total-cases'>
-								<h5 className='center-align'>Total Cases</h5>
+								<h5 className='center-align'>Total</h5>
 								<h5 className='center-align'>{formatNumber(totalCases)}</h5>
 							</Col>
 						)}
@@ -112,7 +112,41 @@ function India() {
 				</Card>
 			</section>
 
+			{/* Testing */}
+			<section className='section'>
+				<h5 className='center-align'>Testing</h5>
+				<Card className='testing'>
+					<Row>
+						{totalTested && (
+							<Col s={6}>
+								<h5 className='center-align'>Total Tested</h5>
+								<h5 className='center-align'>{totalTested}</h5>
+							</Col>
+						)}
+						{testUpdatedTime && (
+							<Col s={6}>
+								<h5 className='center-align'>Last Updated</h5>
+								<h5 className='center-align'>{testUpdatedTime}</h5>
+							</Col>
+						)}
+					</Row>
+					{totalTestByPrivateLabs && (
+						<Row>
+							<Col s={6}>
+								<h5 className='center-align'>Tested by Private labs</h5>
+								<h5 className='center-align'>{formatNumber(totalTestByPrivateLabs)}</h5>
+							</Col>
+						</Row>
+					)}
+					<div className='center-align'>
+						<blockquote>Source: {testSource}</blockquote>
+					</div>
+				</Card>
+			</section>
+
+			{/* Slider */}
 			<Slider
+				className='z-depth-1'
 				fullscreen={false}
 				options={{
 					duration: 500,
@@ -169,38 +203,6 @@ function India() {
 					</Caption>
 				</Slide>
 			</Slider>
-
-			{/* Testing */}
-			<section className='section'>
-				<h5 className='center-align'>Testing</h5>
-				<Card className='testing'>
-					<Row>
-						{totalTested && (
-							<Col s={6}>
-								<h5 className='center-align'>Total Tested</h5>
-								<h5 className='center-align'>{formatNumber(totalTested)}</h5>
-							</Col>
-						)}
-						{testUpdatedTime && (
-							<Col s={6}>
-								<h5 className='center-align'>Last Updated</h5>
-								<h5 className='center-align'>{testUpdatedTime}</h5>
-							</Col>
-						)}
-					</Row>
-					{totalTestByPrivateLabs && (
-						<Row>
-							<Col s={6}>
-								<h5 className='center-align'>Tested by Private labs</h5>
-								<h5 className='center-align'>{formatNumber(totalTestByPrivateLabs)}</h5>
-							</Col>
-						</Row>
-					)}
-					<div className='center-align'>
-						<blockquote>Source: {testSource}</blockquote>
-					</div>
-				</Card>
-			</section>
 
 			{/* State Wise */}
 			<section className='section'>
