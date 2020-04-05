@@ -1,7 +1,17 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import indiaFlag from '../assets/indiaFlag.png';
-import { Row, Col, Card, Icon, Collapsible, CollapsibleItem, Table } from 'react-materialize';
-import Slider from './Slider';
+import {
+	Row,
+	Col,
+	Card,
+	Icon,
+	Collapsible,
+	CollapsibleItem,
+	Table,
+	Slider,
+	Slide,
+	Caption,
+} from 'react-materialize';
 
 function India() {
 	const [lastUpdateTime, setLastUpdateTime] = useState('');
@@ -102,8 +112,63 @@ function India() {
 				</Card>
 			</section>
 
-			{/* Slider */}
-			<Slider />
+			<Slider
+				fullscreen={false}
+				options={{
+					duration: 500,
+					height: 140,
+					indicators: false,
+					interval: 3000,
+				}}>
+				<Slide image={false}>
+					<Caption placement='center'>
+						<h5 className='blue-text'>STAY home</h5>
+					</Caption>
+				</Slide>
+				<Slide image={false}>
+					<Caption placement='center'>
+						<h5 className='blue-text'>KEEP a safe distance</h5>
+					</Caption>
+				</Slide>
+				<Slide image={false}>
+					<Caption placement='center'>
+						<h5 className='blue-text'>Do Physical Distancing But, Show Social Solidarity</h5>
+					</Caption>
+				</Slide>
+				<Slide image={false}>
+					<Caption placement='center'>
+						<h5 className='blue-text'>WASH hands often</h5>
+					</Caption>
+				</Slide>
+				<Slide image={false}>
+					<Caption placement='center'>
+						<h5 className='blue-text'>COVER your cough</h5>
+					</Caption>
+				</Slide>
+				<Slide image={false}>
+					<Caption placement='center'>
+						<h5 className='blue-text'>
+							SICK? Call the helpline.Check Details{' '}
+							<a rel='noreferrer noopener' target='_blank' href='https://www.mygov.in/covid-19/'>
+								<span role='img' aria-label='Link'>
+									🔗
+								</span>{' '}
+								Here
+							</a>
+						</h5>
+					</Caption>
+				</Slide>
+				<Slide image={false}>
+					<Caption placement='center'>
+						<h5 className='blue-text'>
+							Check More Details{' '}
+							<a rel='noreferrer noopener' target='_blank' href='https://who.int'>
+								WHO Official Website
+							</a>
+						</h5>
+					</Caption>
+				</Slide>
+			</Slider>
 
 			{/* Testing */}
 			<section className='section'>
