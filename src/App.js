@@ -9,10 +9,13 @@ import Global from './components/Global';
 import Footer from './components/Footer';
 
 function App() {
-	const [country, setCountry] = useState('');
+	const [country, setCountry] = useState({
+		name: 'India',
+		slug: 'india',
+	});
 
 	const updateSearched = (country) => {
-		if (country !== 'india') {
+		if (country.slug !== 'india') {
 			setCountry(country);
 		}
 	};
@@ -22,7 +25,7 @@ function App() {
 			<Nav title='Covid-19 Stats' />
 			<Autocomplete updateSearched={updateSearched} />
 			<div className='container'>
-				{country.name === 'India' || country === '' ? <India /> : <Global country={country} />}
+				{country.slug === 'india' ? <India /> : <Global country={country} />}
 			</div>
 			<Footer />
 		</div>
