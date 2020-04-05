@@ -151,7 +151,7 @@ function India() {
 							<tr key={state.state}>
 								<td>{state.state}</td>
 								<td>
-									{state.confirmed} <sub>(+{state.delta.confirmed})</sub>
+									{state.confirmed} {state.delta && <sub>(+{state.delta.confirmed})</sub>}
 								</td>
 								<td>{state.active}</td>
 								<td>{state.recovered}</td>
