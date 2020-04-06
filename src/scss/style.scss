@@ -1,24 +1,29 @@
+.loader-container {
+	min-height: 100vh;
+	max-width: 100vw;
+}
+
 /* Autocomplete */
+input[type='text']:not(.browser-default).autocomplete {
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+
 .autocomplete {
 	&::-webkit-input-placeholder {
 		padding-left: 10px;
-		text-transform: capitalize;
 	}
 	&::-moz-placeholder {
 		padding-left: 10px;
-		text-transform: capitalize;
 	}
 	&:-ms-input-placeholder {
 		padding-left: 10px;
-		text-transform: capitalize;
 	}
 	&::-ms-input-placeholder {
 		padding-left: 10px;
-		text-transform: capitalize;
 	}
 	&::placeholder {
 		padding-left: 10px;
-		text-transform: capitalize;
 	}
 }
 
