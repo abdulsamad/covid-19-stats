@@ -45,7 +45,7 @@ function Global({ country }) {
 	}, [country]);
 
 	const formatNumber = (num) => {
-		if (num <= 0) {
+		if (num <= 0 || num === undefined) {
 			return '-';
 		} else {
 			return new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 8 }).format(num);
