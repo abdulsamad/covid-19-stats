@@ -16,7 +16,6 @@ function App() {
 
 	const updateSearched = (country) => {
 		setCountry(country);
-		console.log(country);
 	};
 
 	return (
