@@ -16,46 +16,18 @@ import Loader from './Loader';
 
 function India() {
 	const [loading, setLoading] = useState(true);
-	const [lastUpdateTime, setLastUpdateTime] = useState('');
-	/* Count */
-	const [totalCases, setTotalCases] = useState(0);
-	const [totalActive, setTotalActive] = useState(0);
-	const [totalRecovered, setTotalRecovered] = useState(0);
-	const [totalDeaths, setTotalDeaths] = useState(0);
-	/* Testing */
-	const [totalTested, setTotalTested] = useState(0);
-	const [totalTestByPrivateLabs, setTotalTestByPrivateLabs] = useState(0);
-	const [testUpdatedTime, setTestUpdatedTime] = useState('');
-	const [testSource, setTestSource] = useState('');
-	/* State */
+	const [count, setCount] = useState({});
+	const [tests, setTests] = useState({});
 	const [states, setStates] = useState([]);
-	/* State-District */
 	const [stateDistrict, setStateDistrict] = useState([]);
 
 	useEffect(() => {
 		fetch('https://api.covid19india.org/data.json')
 			.then((res) => res.json())
 			.then((res) => {
-				const tested = res.tested.pop();
-				const count = res.statewise[0];
-				const stateArr = res.statewise.slice(1);
-
-				setLastUpdateTime(count.lastupdatedtime);
-
-				/* Count */
-				setTotalCases(count.confirmed);
-				setTotalActive(count.active);
-				setTotalDeaths(count.deaths);
-				setTotalRecovered(count.recovered);
-
-				/* Tested */
-				setTotalTested(tested.totalsamplestested);
-				setTotalTestByPrivateLabs(tested.testsconductedbyprivatelabs);
-				setTestSource(tested.source);
-				setTestUpdatedTime(tested.updatetimestamp);
-
-				/* State */
-				setStates(stateArr);
+				setCount(res.statewise[0]);
+				setTests(res.tested.pop());
+				setStates(res.statewise.slice(1));
 			});
 		fetch('https://api.covid19india.org/v2/state_district_wise.json')
 			.then((res) => res.json())
@@ -79,44 +51,41 @@ function India() {
 	if (!loading) {
 		return (
 			<div>
-				{console.count()}
 				<section className='center-align'>
 					<h4>INDIA</h4>
 					<img src={indiaFlag} alt='Indian Flag' height='120px' width='200px' />
-					<div className='center-align mtb-1'>Last Updated On: {lastUpdateTime}</div>
+					<div className='center-align mtb-1'>Last Updated On: {count.lastupdatedtime}</div>
 				</section>
+
 				{/* Count */}
 				<section className='section'>
 					<h5 className='center-align'>Count</h5>
-					<Card
-						closeIcon={<Icon>close</Icon>}
-						className='count'
-						revealIcon={<Icon>more_vert</Icon>}>
+					<Card className='count'>
 						<Row>
-							{totalCases && (
+							{count.confirmed && (
 								<Col s={6} className='total-cases'>
 									<h5 className='center-align'>Total</h5>
-									<h5 className='center-align'>{formatNumber(totalCases)}</h5>
+									<h5 className='center-align'>{formatNumber(count.confirmed)}</h5>
 								</Col>
 							)}
-							{totalCases && (
+							{count.active && (
 								<Col s={6} className='total-active'>
 									<h5 className='center-align'>Active</h5>
-									<h5 className='center-align'>{formatNumber(totalActive)}</h5>
+									<h5 className='center-align'>{formatNumber(count.active)}</h5>
 								</Col>
 							)}
 						</Row>
 						<Row>
-							{totalCases && (
+							{count.recovered && (
 								<Col s={6} className='total-recovered'>
 									<h5 className='center-align'>Recovered</h5>
-									<h5 className='center-align'>{formatNumber(totalRecovered)}</h5>
+									<h5 className='center-align'>{formatNumber(count.recovered)}</h5>
 								</Col>
 							)}
-							{totalCases && (
+							{count.deaths && (
 								<Col s={6} className='total-deaths'>
 									<h5 className='center-align'>Deaths</h5>
-									<h5 className='center-align'>{formatNumber(totalDeaths)}</h5>
+									<h5 className='center-align'>{formatNumber(count.deaths)}</h5>
 								</Col>
 							)}
 						</Row>
@@ -125,37 +94,41 @@ function India() {
 						</div>
 					</Card>
 				</section>
+
 				{/* Testing */}
 				<section className='section'>
 					<h5 className='center-align'>Testing</h5>
 					<Card className='testing'>
 						<Row>
-							{totalTested && (
+							{tests.totalsamplestested && (
 								<Col s={6}>
 									<h5 className='center-align'>Sample Tested</h5>
-									<h5 className='center-align'>{formatNumber(totalTested)}</h5>
+									<h5 className='center-align'>{formatNumber(tests.totalsamplestested)}</h5>
 								</Col>
 							)}
-							{testUpdatedTime && (
+							{tests.updatetimestamp && (
 								<Col s={6}>
 									<h5 className='center-align'>Last Updated</h5>
-									<h5 className='center-align'>{testUpdatedTime}</h5>
+									<h5 className='center-align'>{tests.updatetimestamp}</h5>
 								</Col>
 							)}
 						</Row>
-						{totalTestByPrivateLabs && (
+						{tests.testsconductedbyprivatelabs && (
 							<Row>
 								<Col s={6}>
 									<h5 className='center-align'>Tested by Private labs</h5>
-									<h5 className='center-align'>{formatNumber(totalTestByPrivateLabs)}</h5>
+									<h5 className='center-align'>
+										{formatNumber(tests.testsconductedbyprivatelabs)}
+									</h5>
 								</Col>
 							</Row>
 						)}
 						<div className='center-align'>
-							<blockquote>Source: {testSource}</blockquote>
+							<blockquote>Source: {tests.source}</blockquote>
 						</div>
 					</Card>
 				</section>
+
 				{/* Slider */}
 				<Slider
 					className='z-depth-1'
@@ -215,6 +188,7 @@ function India() {
 						</Caption>
 					</Slide>
 				</Slider>
+
 				{/* State Wise */}
 				<section className='section'>
 					<h5 className='center-align'>State Wise</h5>
@@ -250,6 +224,7 @@ function India() {
 						<blockquote>Source: covid19india.org</blockquote>
 					</div>
 				</section>
+
 				{/* State District Wise */}
 				<section className='section'>
 					<h5 className='center-align'>State-District Wise</h5>
