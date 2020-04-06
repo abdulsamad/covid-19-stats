@@ -4,9 +4,15 @@
 }
 
 /* Autocomplete */
+.autocomplete-container {
+	margin-top: 0;
+}
+
 input[type='text']:not(.browser-default).autocomplete {
 	padding-left: 10px;
 	box-sizing: border-box;
+	background-color: #fff;
+	margin-top: 0;
 }
 
 .autocomplete {
@@ -54,7 +60,7 @@ blockquote {
 }
 
 .slider .slides {
-	background-color: transparent;
+	background-color: #fff;
 	border-left: 5px solid $primary-color;
 }
 

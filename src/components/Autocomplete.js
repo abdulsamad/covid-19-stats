@@ -37,6 +37,7 @@ function Autocomplete({ updateSearched }) {
 		<section className='center-align'>
 			<Auto
 				id='Autocomplete-1'
+				className='autocomplete-container'
 				options={{
 					data: countries,
 					limit: 10,
