@@ -15,9 +15,8 @@ function App() {
 	});
 
 	const updateSearched = (country) => {
-		if (country.slug !== 'india') {
-			setCountry(country);
-		}
+		setCountry(country);
+		console.log(country);
 	};
 
 	return (
