@@ -48,7 +48,9 @@ function Global({ country }) {
 		if (num <= 0 || num === undefined) {
 			return '-';
 		} else {
-			return new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 8 }).format(num);
+			return new Intl.NumberFormat('en-IN', {
+				maximumSignificantDigits: 8,
+			}).format(num);
 		}
 	};
 
@@ -65,11 +67,15 @@ function Global({ country }) {
 						<Row className=''>
 							<Col s={6} className='total-cases'>
 								<h6 className='center-align'>Total</h6>
-								<h5 className='center-align'>{formatNumber(count.confirmed)}</h5>
+								<h5 className='center-align'>
+									{formatNumber(count.confirmed)}
+								</h5>
 							</Col>
 							<Col s={6} className='total-recovered'>
 								<h6 className='center-align'>Recovered</h6>
-								<h5 className='center-align'>{formatNumber(count.recovered)}</h5>
+								<h5 className='center-align'>
+									{formatNumber(count.recovered)}
+								</h5>
 							</Col>
 						</Row>
 						<Row>
@@ -95,17 +101,23 @@ function Global({ country }) {
 						<Row>
 							<Col s={6} className='total-cases'>
 								<h5 className='center-align'>New Cases</h5>
-								<h5 className='center-align'>{formatNumber(newCases.confirmed)}</h5>
+								<h5 className='center-align'>
+									{formatNumber(newCases.confirmed)}
+								</h5>
 							</Col>
 							<Col s={6} className='total-recovered'>
 								<h5 className='center-align'>New Recovered</h5>
-								<h5 className='center-align'>{formatNumber(newCases.recovered)}</h5>
+								<h5 className='center-align'>
+									{formatNumber(newCases.recovered)}
+								</h5>
 							</Col>
 						</Row>
 						<Row>
 							<Col s={6} className='total-deaths'>
 								<h5 className='center-align'>New Deaths</h5>
-								<h5 className='center-align'>{formatNumber(newCases.deaths)}</h5>
+								<h5 className='center-align'>
+									{formatNumber(newCases.deaths)}
+								</h5>
 							</Col>
 							<Col s={6}>
 								<h5 className='center-align'>Last Updated</h5>
