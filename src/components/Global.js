@@ -56,94 +56,88 @@ function Global({ country }) {
 		}
 	};
 
-	if (!loading) {
-		return (
-			<div>
-				<section className='center-align'>
-					<h4>{country.name}</h4>
-					<img
-						src={`https://www.countryflags.io/${countryCode}/flat/64.png`}
-						alt={`${country} Flag`}
-						height='64px'
-						width='64px'
-					/>
-					<br />
-				</section>
-
-				{/* Total Cases */}
-				<h5 className='center-align'>Count</h5>
-				<section className='section'>
-					<Card>
-						<Row className=''>
-							<Col s={6} className='total-cases'>
-								<h6 className='center-align'>Total</h6>
-								<h5 className='center-align'>
-									{formatNumber(count.confirmed)}
-								</h5>
-							</Col>
-							<Col s={6} className='total-recovered'>
-								<h6 className='center-align'>Recovered</h6>
-								<h5 className='center-align'>
-									{formatNumber(count.recovered)}
-								</h5>
-							</Col>
-						</Row>
-						<Row>
-							<Col s={6} className='total-deaths'>
-								<h6 className='center-align'>Deaths</h6>
-								<h5 className='center-align'>{formatNumber(count.deaths)}</h5>
-							</Col>
-							<Col s={6}>
-								<h6 className='center-align'>Last Updated</h6>
-								<h5 className='center-align'>{lastUpdated}</h5>
-							</Col>
-						</Row>
-						<div className='center-align'>
-							<blockquote>Source: covid19api.com</blockquote>
-						</div>
-					</Card>
-				</section>
-
-				{/* New Cases */}
-				<h5 className='center-align'>New Cases</h5>
-				<section className='section'>
-					<Card>
-						<Row>
-							<Col s={6} className='total-cases'>
-								<h5 className='center-align'>New Cases</h5>
-								<h5 className='center-align'>
-									{formatNumber(newCases.confirmed)}
-								</h5>
-							</Col>
-							<Col s={6} className='total-recovered'>
-								<h5 className='center-align'>New Recovered</h5>
-								<h5 className='center-align'>
-									{formatNumber(newCases.recovered)}
-								</h5>
-							</Col>
-						</Row>
-						<Row>
-							<Col s={6} className='total-deaths'>
-								<h5 className='center-align'>New Deaths</h5>
-								<h5 className='center-align'>
-									{formatNumber(newCases.deaths)}
-								</h5>
-							</Col>
-							<Col s={6}>
-								<h5 className='center-align'>Last Updated</h5>
-								<h5 className='center-align'>{lastUpdated}</h5>
-							</Col>
-						</Row>
-						<div className='center-align'>
-							<blockquote>Source: covid19api.com</blockquote>
-						</div>
-					</Card>
-				</section>
-			</div>
-		);
-	} else {
+	if (loading) {
 		return <Loader />;
 	}
+
+	return (
+		<div>
+			<section className='center-align'>
+				<h4>{country.name}</h4>
+				<img
+					src={`https://www.countryflags.io/${countryCode}/flat/64.png`}
+					alt={`${country} Flag`}
+					height='64px'
+					width='64px'
+				/>
+				<br />
+			</section>
+
+			{/* Total Cases */}
+			<h5 className='center-align'>Count</h5>
+			<section className='section'>
+				<Card>
+					<Row className=''>
+						<Col s={6} className='total-cases'>
+							<h6 className='center-align'>Total</h6>
+							<h5 className='center-align'>{formatNumber(count.confirmed)}</h5>
+						</Col>
+						<Col s={6} className='total-recovered'>
+							<h6 className='center-align'>Recovered</h6>
+							<h5 className='center-align'>{formatNumber(count.recovered)}</h5>
+						</Col>
+					</Row>
+					<Row>
+						<Col s={6} className='total-deaths'>
+							<h6 className='center-align'>Deaths</h6>
+							<h5 className='center-align'>{formatNumber(count.deaths)}</h5>
+						</Col>
+						<Col s={6}>
+							<h6 className='center-align'>Last Updated</h6>
+							<h5 className='center-align'>{lastUpdated}</h5>
+						</Col>
+					</Row>
+					<div className='center-align'>
+						<blockquote>Source: covid19api.com</blockquote>
+					</div>
+				</Card>
+			</section>
+
+			{/* New Cases */}
+			<h5 className='center-align'>New Cases</h5>
+			<section className='section'>
+				<Card>
+					<Row>
+						<Col s={6} className='total-cases'>
+							<h5 className='center-align'>New Cases</h5>
+							<h5 className='center-align'>
+								{formatNumber(newCases.confirmed)}
+							</h5>
+						</Col>
+						<Col s={6} className='total-recovered'>
+							<h5 className='center-align'>New Recovered</h5>
+							<h5 className='center-align'>
+								{formatNumber(newCases.recovered)}
+							</h5>
+						</Col>
+					</Row>
+					<Row>
+						<Col s={6} className='total-deaths'>
+							<h5 className='center-align'>New Deaths</h5>
+							<h5 className='center-align'>{formatNumber(newCases.deaths)}</h5>
+						</Col>
+						<Col s={6}>
+							<h5 className='center-align'>Last Updated</h5>
+							<h5 className='center-align'>{lastUpdated}</h5>
+						</Col>
+					</Row>
+					<div className='center-align'>
+						<blockquote>Source: covid19api.com</blockquote>
+					</div>
+				</Card>
+			</section>
+		</div>
+	);
 }
 
 export default Global;
