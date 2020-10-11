@@ -7,6 +7,7 @@ function Global({ country }) {
 	const [count, setCount] = useState({});
 	const [newCases, setNewCases] = useState({});
 	const [lastUpdated, setLastUpdated] = useState('');
+	const [countryCode, setCountryCode] = useState('');
 
 	useEffect(() => {
 		if (country !== null) {
@@ -32,6 +33,7 @@ function Global({ country }) {
 
 							setCount(totalCount);
 							setNewCases(newCount);
+							setCountryCode(current.CountryCode);
 							break;
 						}
 					}
@@ -57,8 +59,16 @@ function Global({ country }) {
 	if (!loading) {
 		return (
 			<div>
-				<h4 className='center-align'>{country.name}</h4>
-				<br />
+				<section className='center-align'>
+					<h4>{country.name}</h4>
+					<img
+						src={`https://www.countryflags.io/${countryCode}/flat/64.png`}
+						alt={`${country} Flag`}
+						height='64px'
+						width='64px'
+					/>
+					<br />
+				</section>
 
 				{/* Total Cases */}
 				<h5 className='center-align'>Count</h5>
