@@ -1,7 +1,3 @@
-## Simple COVID-19 Stats
+## COVID-19 Stats
 
-### Data provided by -
-
-#### [COVID-19 INDIA](https://covid19india.org) (India)
-
-#### [COVID-19 API](https://covid19api.com) (Worldwide)
+> #### Simple application for checking COVID-19 stats of India and other countries
