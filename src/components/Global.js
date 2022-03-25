@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Card, Row, Col } from "react-materialize";
-import Loader from "./Loader";
+import React, { useState, useEffect } from 'react';
+import { Card, Row, Col } from 'react-materialize';
+import ReactCountryFlag from 'react-country-flag';
+
+import Loader from './Loader';
 
 function Global({ country }) {
   const [loading, setloading] = useState(true);
   const [count, setCount] = useState({});
   const [newCases, setNewCases] = useState({});
-  const [lastUpdated, setLastUpdated] = useState("");
-  const [countryCode, setCountryCode] = useState("");
+  const [lastUpdated, setLastUpdated] = useState('');
+  const [countryCode, setCountryCode] = useState('');
 
   useEffect(() => {
     if (country !== null) {
@@ -18,7 +20,7 @@ function Global({ country }) {
 
           for (const key in countries) {
             const current = countries[key];
-            if (current["Slug"] === country.slug) {
+            if (current['Slug'] === country.slug) {
               const totalCount = {
                 confirmed: current.TotalConfirmed,
                 recovered: current.TotalRecovered,
@@ -48,9 +50,9 @@ function Global({ country }) {
 
   const formatNumber = (num) => {
     if (num <= 0 || num === undefined) {
-      return "-";
+      return '-';
     } else {
-      return new Intl.NumberFormat("en-IN", {
+      return new Intl.NumberFormat('en-IN', {
         maximumSignificantDigits: 8,
       }).format(num);
     }
@@ -64,11 +66,13 @@ function Global({ country }) {
     <div>
       <section className="center-align">
         <h4>{country.name}</h4>
-        <img
-          src={`https://www.countryflags.io/${countryCode}/flat/64.png`}
-          alt={`${country} Flag`}
-          height="64px"
-          width="64px"
+        <ReactCountryFlag
+          countryCode={countryCode}
+          aria-label={country.name}
+          title={country.name}
+          style={{
+            fontSize: '5rem',
+          }}
         />
         <br />
       </section>
@@ -110,15 +114,11 @@ function Global({ country }) {
           <Row>
             <Col s={6} className="total-cases">
               <h5 className="center-align">New Cases</h5>
-              <h5 className="center-align">
-                {formatNumber(newCases.confirmed)}
-              </h5>
+              <h5 className="center-align">{formatNumber(newCases.confirmed)}</h5>
             </Col>
             <Col s={6} className="total-recovered">
               <h5 className="center-align">New Recovered</h5>
-              <h5 className="center-align">
-                {formatNumber(newCases.recovered)}
-              </h5>
+              <h5 className="center-align">{formatNumber(newCases.recovered)}</h5>
             </Col>
           </Row>
           <Row>
